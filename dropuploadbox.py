@@ -22,7 +22,7 @@ def main():
     file_from = os.environ.get('ATTACHMENT')
     # The full path to upload the file to, including the file name
     file_to = '/' + os.environ.get('PROJECT_NAME') + '/' + path_leaf(file_from) 
-    print(file_to)
+   # print(file_to)
     transferData.upload_file(file_from, file_to)
     dbx = dropbox.Dropbox(os.environ.get('DROPBOX_ACCESS_TOKEN'))
     f = open("link.txt", "w")
