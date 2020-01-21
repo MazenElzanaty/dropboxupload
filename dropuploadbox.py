@@ -21,11 +21,21 @@ def main():
     ntpath.basename(os.environ.get('ATTACHMENT'))
     file_from = os.environ.get('ATTACHMENT')
     # The full path to upload the file to, including the file name
-    file_to = '/app/' + path_leaf(file_from) 
+    file_to = '/' + os.environ.get('PROJECT_NAME') + '/' + path_leaf(file_from) 
+    print(file_to)
     transferData.upload_file(file_from, file_to)
     dbx = dropbox.Dropbox(os.environ.get('DROPBOX_ACCESS_TOKEN'))
-    shared_link_metadata = dbx.sharing_create_shared_link_with_settings('/'+os.environ.get('PROJECT_NAME'))
-    print (shared_link_metadata.url)
+    f = open("link.txt", "w")
+    f.write("https://www.dropbox.com/home/Apps/Code95AndroidAPK/" + os.environ.get('PROJECT_NAME') )
+    f.close()
 
 if __name__ == '__main__':
     main()
+
+
+      #try:
+    #    shared_link_metadata = dbx.sharing_create_shared_link_with_settings('/'+os.environ.get('PROJECT_NAME'))
+     #   print(shared_link_metadata.url)
+     #   
+    #except:
+     #   pass
